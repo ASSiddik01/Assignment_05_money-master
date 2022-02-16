@@ -3,7 +3,16 @@ function getValue(inputId) {
     const inputField = document.getElementById(inputId);
     const inputVlaue = parseFloat(inputField.value);
     return inputVlaue;
-}
+};
+
+// Get Inner Text
+function getInnerText(textId) {
+    const textField = document.getElementById(textId);
+    const textValue = parseFloat(textField.innerText);
+    return textValue
+};
+
+
 // Total Expense Calculate
 function costCalculate() {
     // 1. Get Total Income
@@ -12,7 +21,14 @@ function costCalculate() {
     const food = getValue('food')
     // 3. Get Rent
     const rent = getValue('rent')
-    // 3. Get Cloths
+    // 4. Get Cloths
     const cloth = getValue('cloth')
-    console.log(cloth);
-}
+
+    // 5. Get Tolal Expense
+    const expense = getInnerText('total_expenses');
+    // 5. Get Balence
+    const balance = getInnerText('balance');
+    console.log(balance)
+    
+};
+
