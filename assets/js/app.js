@@ -1,8 +1,8 @@
 // Get value
 function getValue(inputId) {
     const inputField = document.getElementById(inputId);
-    const inputVlaue = parseFloat(inputField.value);
-    return inputVlaue;
+    const inputValue = parseFloat(inputField.value);
+    return inputValue;
 };
 
 // Get Inner Text
@@ -11,6 +11,12 @@ function getInnerText(textId) {
     const textValue = parseFloat(textField.innerText);
     return textValue
 };
+
+// Update Balance
+function updateBalance(fieldName, fieldValue) {
+    const previousExpense = document.getElementById(fieldName);
+    previousExpense.innerText = fieldValue;
+}
 
 
 // Total Expense Calculate
@@ -31,15 +37,12 @@ function costCalculate() {
 
     // 7.Update Total Expanse
     const totalExpense = food + rent + cloth;
-
-    const previousExpense = document.getElementById('total_expenses');
-    previousExpense.innerText = totalExpense;
+    updateBalance('total_expenses', totalExpense);
 
     // 7.Update Total Balance
     const totalBalance = income - totalExpense;
-
-    const previousBalance = document.getElementById('balance');
-    previousBalance.innerText = totalBalance;
-
+    updateBalance('balance', totalBalance);
 };
+
+
 
