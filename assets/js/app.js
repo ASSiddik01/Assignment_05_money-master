@@ -35,14 +35,24 @@ function costCalculate() {
     // 6. Get Balence
     const balance = getInnerText('balance');
 
-    // 7.Update Total Expanse
+    // 7. Update Total Expanse
     const totalExpense = food + rent + cloth;
     updateBalance('total_expenses', totalExpense);
 
-    // 7.Update Total Balance
+    // 7. Update Total Balance
     const totalBalance = income - totalExpense;
     updateBalance('balance', totalBalance);
 };
 
-
+// Save Calculation
+function saveCalculate() {
+    // 8. Get save
+    const save = getValue('save');
+    // 9. Calculate save amount
+    const income = getValue('income');
+    const saveAmount = income * 20 / 100;
+    // 10. Update Save amount
+    const previousSaveAmount = document.getElementById('save_amount')
+    previousSaveAmount.innerText = saveAmount;
+}
 
