@@ -26,9 +26,14 @@ function costCalculate() {
 
     // 5. Get Tolal Expense
     const expense = getInnerText('total_expenses');
-    // 5. Get Balence
+    // 6. Get Balence
     const balance = getInnerText('balance');
-    console.log(balance)
+
+    // 7.Update Total Expanse
+    const totalExpense = food + rent + cloth;
     
+    const previousExpense = document.getElementById('total_expenses');
+    previousExpense.innerText = totalExpense;
+
 };
 
