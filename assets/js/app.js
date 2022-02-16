@@ -31,9 +31,15 @@ function costCalculate() {
 
     // 7.Update Total Expanse
     const totalExpense = food + rent + cloth;
-    
+
     const previousExpense = document.getElementById('total_expenses');
     previousExpense.innerText = totalExpense;
+
+    // 7.Update Total Balance
+    const totalBalance = income - totalExpense;
+
+    const previousBalance = document.getElementById('balance');
+    previousBalance.innerText = totalBalance;
 
 };
 
