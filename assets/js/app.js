@@ -46,13 +46,26 @@ function costCalculate() {
 
 // Save Calculation
 function saveCalculate() {
+
     // 8. Get save
     const save = getValue('save');
+
     // 9. Calculate save amount
     const income = getValue('income');
     const saveAmount = income * 20 / 100;
+
     // 10. Update Save amount
     const previousSaveAmount = document.getElementById('save_amount')
     previousSaveAmount.innerText = saveAmount;
-}
+
+    // 11. Calculate remaining balance
+    const balance = getInnerText('balance');
+    const remainBalance = balance - saveAmount;
+
+    // 12. Update remaining balance
+    const previousRemainBlance = document.getElementById('remain_balance')
+    previousRemainBlance.innerText = remainBalance;
+
+
+};
 
