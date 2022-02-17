@@ -1,7 +1,4 @@
-body{
-    margin: 0 auto;
-}
-
-#string,#number{
+/* Error CSS */
+#string, #number, #saving {
     display: none;
 }

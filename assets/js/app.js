@@ -12,48 +12,72 @@ function updateBalance(fieldName, fieldValue) {
     previousExpense.innerText = fieldValue;
 }
 
-
-// Total Expense Calculate
+// Calculate button Handle
 function costCalculate() {
-
-    // 1. Get Total Income
+    // 1. Get Value
     const income = getValue('income');
-
-    // 2. Get Food
     const food = getValue('food');
-
-    // 3. Get Rent
     const rent = getValue('rent');
-
-    // 4. Get Cloths
     const cloth = getValue('cloth');
 
-    // 7. Update Total Expanse
-    const totalExpense = food + rent + cloth;
-    updateBalance('total_expenses', totalExpense);
+    // Error handle
+    const items = [income, food, rent, cloth];
+    for (const item of items) {
+        if (isNaN(item)) {
+            document.getElementById('string').style.display = 'block';
+            document.getElementById('number').style.display = 'none';
+        } else if (item < 0) {
+            document.getElementById('string').style.display = 'none';
+            document.getElementById('number').style.display = 'block';
+        }
 
-    // 7. Update Total Balance
-    const totalBalance = income - totalExpense;
-    updateBalance('balance', totalBalance);
+
+        // 2. Update Total Expanse
+        const totalExpense = food + rent + cloth;
+        
+        // Error handle
+        if (typeof totalExpense == 'number' && food > 0 && rent > 0 && cloth > 0 && income > 0) {
+            updateBalance('total_expenses', totalExpense);
+
+            // 3. Update Total Balance
+            const totalBalance = income - totalExpense;
+            updateBalance('balance', totalBalance);
+        }
+        //     updateBalance('total_expenses', totalExpense);
+
+        // // 3. Update Total Balance
+        // const totalBalance = income - totalExpense;
+        // updateBalance('balance', totalBalance);
+
+
+
+    }
 };
 
-// Save Calculation
+// Save button Handle
 function saveCalculate() {
-
-    // 8. Get save
+    // 4. Get Values
     const save = getValue('save');
 
-    // 9. Calculate save amount
+    // 5. Calculate & Update save amount
     const income = getValue('income');
     const saveAmount = income * save / 100;
-
-    // 10. Update Save amount
     updateBalance('save_amount', saveAmount);
 
-    // 11. Calculate remaining balance
+    // 6. Calculate & Update remaining balance
     const balance = parseFloat(document.getElementById('balance').innerText);
-    const remainBalance = balance - saveAmount;
 
-    // 12. Update remaining balance
-    updateBalance('remain_balance', remainBalance);
+    // Error handle
+    if (saveAmount > balance) {
+        document.getElementById('saving').style.display = 'block';
+        document.getElementById('string').style.display = 'none';
+        document.getElementById('number').style.display = 'none';
+
+    } else if (saveAmount < balance) {
+        const remainBalance = balance - saveAmount;
+        updateBalance('remain_balance', remainBalance);
+    }
+
+    // const remainBalance = balance - saveAmount;
+    // updateBalance('remain_balance', remainBalance);
 };
